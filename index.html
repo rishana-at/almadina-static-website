@@ -16,6 +16,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>	
 </head>
 <body>
 	
@@ -327,7 +329,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<div class="col span_2_of_2">
 											  <div class="contact-form">
 												  <h2>Contact Us</h2>
-													<form  id="gform" method="POST" class="pure-form pure-form-stacked" data-email="" action="https://script.google.com/macros/s/AKfycbwjinaCLp9OVjKfzaBiGZ4SoGu6tlrXyuEZVFiapQ/exec">
+													<form  id="submit-form"  class="pure-form pure-form-stacked" data-email="" action=""
 														<div>
 															<span><label>NAME</label></span>
 															<span><input  id="name" name="name"type="text" value=""></span>
@@ -351,6 +353,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 															   <span><input type="submit" value="Submit"></span>
 													  </div>
 												 </form>
+												   <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbwjinaCLp9OVjKfzaBiGZ4SoGu6tlrXyuEZVFiapQ/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
 												 <script data-cfasync="false" type="text/javascript"
 						src="https://cdn.rawgit.com/dwyl/learn-to-send-email-via-google-script-html-no-server/master/form-submission-handler.js"></script>				
 		<div class="clear"></div>
